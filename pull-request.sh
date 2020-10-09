@@ -120,7 +120,7 @@ main () {
             # PULL_REQUEST_TITLE
             if [[ -z "${PULL_REQUEST_TITLE}" ]]; then
                 echo "no PULL_REQUEST_TITLE set";
-                PULL_REQUEST_TITLE="${HEAD_BRANCH}";
+                PULL_REQUEST_TITLE="${HEAD_BRANCH} -> ${BASE_BRANCH}";
             fi
             echo "using PULL_REQUEST_TITLE ${PULL_REQUEST_TITLE}";
 
