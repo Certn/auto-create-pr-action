@@ -63,16 +63,13 @@ create_pull_request() {
 
     echo "response ref: ${PR}";
 
-    if [[ "${PR}" == "${SOURCE}" ]]; then
-        # pull request already open
-        echo "pull request from SOURCE ${SOURCE} to TARGET ${TARGET} is already open";
-    else
-        # open new pull request
-        DATA="{\"title\":\"${TITLE}\", \"body\":\"${BODY}\", \"base\":\"${TARGET}\", \"head\":\"${SOURCE}\", \"draft\":\"${DRAFT}\"}";
-        curl -sSL -H "${AUTH_HEADER}" -H "${HEADER}" -X POST --data "${DATA}" ${PULLS_URL};
 
-        # handle_last_exit_code "$?"
-    fi
+    # open new pull request
+    DATA="{\"title\":\"${TITLE}\", \"body\":\"${BODY}\", \"base\":\"${TARGET}\", \"head\":\"${SOURCE}\", \"draft\":\"${DRAFT}\"}";
+    curl -sSL -H "${AUTH_HEADER}" -H "${HEADER}" -X POST --data "${DATA}" ${PULLS_URL};
+
+    # handle_last_exit_code "$?"
+
 }
 
 main () {
